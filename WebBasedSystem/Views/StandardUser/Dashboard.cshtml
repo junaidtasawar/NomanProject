@@ -1,0 +1,378 @@
+﻿@model WebBasedSystem.ViewModels.StandardUserModel
+@{
+    ViewBag.Title = "";
+
+}
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
+      rel="Stylesheet" type="text/css" />
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/css/ruang-admin.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<style>
+    .row > [class^="col-"] { /* This will grab all the elements with classes that start with "col-" and that are the immediate children of #main-form. */
+        margin-bottom: 20px;
+        /* or the value of your bootstrap's gutter width so that you can have a nice consistent margin between elements*/
+    }
+
+
+
+    tbody>tr>:nth-child(your_parameter){ 
+/* your css here */
+      width:50px;
+}
+
+h1{
+    margin:0;
+    padding:0;
+    color:#111;
+    font-size:5em;
+}
+h1 span{
+    display:table-cell;
+    margin:0;
+    padding:0;
+    animation: animate 2s linear infinite;
+}
+.my-header h2 { 
+  display: inline;
+}
+.my-header span { 
+  float: right;
+}
+
+
+</style>
+
+
+
+<div class="row">
+    <div class="col-sm-4">
+       
+        <!-- Form Basic -->
+        <table id="myTablesss" class="table align-items-center table-flush" style="width: 150%;margin-top: -66px;margin-left: -246px;">
+            <tr style="background-color:lightskyblue;">
+                <th>Medical Specialist</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td style="width: 31%;">Psychiatrists</td>
+                <td style="width: 31%;">Clinical</td>
+                <td>Physicians</td>
+            </tr>
+            <tr>
+                <td style="width: 30%;">Paediatricians</td>
+                <td>Psychologists</td>
+                <td>Mental Health Nurses</td>
+            </tr>
+        </table>
+        <table id="myTablesss" class="table align-items-center table-flush" style="width: 159%;margin-top: -162px;margin-left: 271px;">
+            <tr style="background-color:lightskyblue;">
+                <th>Non Medical</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td style="width: 31%;">ADHD Coaches</td>
+                <td>Relationalship Counsellars</td>
+            </tr>
+            <tr>
+                <td style="width: 54%;">Occupational Therapists</td>
+                <td>Educators</td>
+                <td></td>
+         
+            </tr>
+        </table>
+
+        <table id="myTablessgfgfgs" class="table align-items-center table-flush" style="width: 151%;margin-top: -162px;margin-left: 818px;">
+            <tr style="background-color:lightskyblue;">
+                <th>Services</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td style="width: 31%;">Support</td>
+                <td style="width:28%;">Organization</td>
+                <td>Remote Services</td>
+                
+            </tr>
+            <tr>
+                <td style="width: 30%;">Services</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        @*<div>
+        <h4 style="color:#701547"><strong>WELCOME TO ADHD FOUNDATION</strong></h4>
+            </div>*@
+        @*<div class="my-header">
+            <h2>WELCOME TO ADHD FOUNDATION</h2>
+            <span>Status</span>
+        </div>
+        <div style="clear:both"></div>*@
+        <h1 style="margin-left: -232px;color:#701547;font-size: 60px">
+            <span>W</span>
+            <span>E</span>
+            <span>L</span>
+            <span>C</span>
+            <span>O</span>
+            <span>M</span>
+            <span>E&nbsp;</span>
+            <span>T</span>
+            <span>O&nbsp;</span>
+            <span>A</span>
+            <span>D</span>
+            <span>H</span>
+            <span>D&nbsp;</span>
+            <span>F</span>
+            <span>O</span>
+            <span>U</span>
+            <span>N</span>
+            <span>D</span>
+            <span>A</span>
+            <span>T</span>
+            <span>I</span>
+            <span>O</span>
+            <span>N</span>
+        </h1>
+      
+        @*<div class="table-responsive">
+            <table id="myTable" class="table align-items-center table-flush" style="width: 80%">
+                <colgroup>
+                    <col span="1" style="width: 70%;">
+                </colgroup>
+                <thead>
+                    <tr style="background-color:lightskyblue;">
+                        <th style="color:white;">Specialist Type</th>
+                        <th style="color:white;">Medical Specialist</th>
+                        <th style="color:white;">State</th>
+                        <th style="color:white;">Sub Menu</th>
+                        <th style="color:white;">Suburbs</th>
+                        <th style="color:white;">Post Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    Spnddf
+                </tbody>
+            </table>
+
+        </div>*@
+
+
+        <div class="card mb-4" style="left: 1153px;margin-left: -160px;width: 95%;margin-top: 20px;">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color:#701547;">
+                <h6 class="m-0 font-weight-bold" style="color:white;">Search Engine</h6>
+            </div>
+
+        </div>
+    
+       
+        <div class="card mb-4" style="left: 1073px;margin-left: -80px;margin-top: -10px;width: 95%;">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color:#701547;">
+                <h6 class="m-0 font-weight-bold" style="color:white;">Standard User Form</h6>
+            </div>
+            <div class="card-body" style="background-color:#701547">
+                <form id="myForm" style="background-color:#701547">
+                    <div class="row">
+                        <input type="hidden" id="WayPointId" name="Id" />
+                        <div class="col-md-12">
+                            @if (ViewBag.CountryList != null)
+                            {
+                                @Html.DropDownListFor(model => model.specialistType.SpecialistTypeId, ViewBag.CountryList as SelectList, "--Select SpecialistType--", new { @id = "SpecialistTypeId", @class = "form-control" })
+                            }
+                        </div>
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(model => model.specialistTypesubmenu.SubMenuId, new SelectList(" "), "--Select SubMenu--", new { @id = "SubMenuId", @class = "form-control" })
+                        </div>
+                        @*<div class="col-md-12">
+                                @if (ViewBag.Title != null)
+                                {
+                                    @Html.DropDownListFor(model => model.TitleId, ViewBag.Title as SelectList, "--Select Title--", new { @class = "form-control" })
+                                }
+                            </div>*@
+
+                        <div class="col-md-12">
+                            @*@Html.DropDownList("State", ViewBag.State as IEnumerable<SelectListItem>, new { @id = "State", @class = "form-control"}))*@
+
+
+                            @Html.DropDownListFor(model => model.waypoints.Id, ViewBag.State as SelectList, "--Select State--", new { @id = "stateid", @class = "form-control", @placeholder = "State" })
+                        </div>
+                        @*<div class="col-md-12">
+                            <label for="departmentsDropdown"><b>Departments</b></label>
+                            <select class="form-control" id="departmentsDropdown" name="departmentsDropdown"></select>*@
+                        @Html.DropDownListFor(model => model.waypoints.Id, new SelectList(" "), new { @id = "SuburbsId", @class = "form-control", @style = "margin-left: 15px;" })
+                    </div>
+                    <div class="col-md-12">
+
+                        @Html.TextBoxFor(model => model.waypoints.Id, new { @id = "PostCode", @class = "form-control", @style = "margin-top: 17px;width: 109%;margin-left: -12px;height: 46px;" })
+                    </div>
+
+                    <button id="btnSubmit" type="button" class="btn btn-outline-success mb-1" style="margin-left: 15px;width: 110px;margin-top: 24px;">Submit</button>
+            </div>
+            </form>
+            <div style="text-align:center;display:none" id="loaderDiv">
+                <img src="~/Content/InternetSlowdown_Day.gif" width="150" />
+            </div>
+        </div>
+
+       
+       
+      
+        <img src="~/Content/img/img3.jpg" alt="" width="1000" height="450" style="margin-top: -625px;margin-left: -241px;">
+
+        <div class="container" style="width:40%;margin-top:2%">
+            <div class="row">
+                <div class="col-lg-12 mb-4">
+                    <!-- Simple Tables -->
+                    <div class="card" style="width: 1756%;margin-left: -366px;margin-top: 85px;">
+                        <div class="table-responsive" style="margin-top: -122px;">
+                            <table id="myTable" class="table align-items-center table-flush" style="width: 80%">
+                                <colgroup>
+                                    <col span="1" style="width: 70%;">
+                                </colgroup>
+                                <thead>
+                                    <tr style="background-color:lightskyblue;">
+                                        @*<th style="color:white;">Specialist Type</th>*@
+                                        <th style="color:white;">Title</th>
+                                        <th style="color:white;">F.Name</th>
+                                        <th style="color:white;">SurName</th>
+                                        <th style="color:white;">Address</th>
+                                        <th style="color:white;">MobileNo</th>
+                                        <th style="color:white;">PhoneNo</th>
+                                        <th style="color:white;">Email</th>
+                                        <th style="color:white;">State</th>
+                                        <th style="color:white;">TakingNewPatients</th>
+                                        <th style="color:white;">IsBooking</th>
+                                        <th style="color:white;">Waiting_Time</th>
+                                        <th style="color:white;">price</th>
+                                        <th style="color:white;">SubUrbs</th>
+                                        <th style="color:white;">Location</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="~/Content/img/img4.jpg" alt="" width="120" height="100" style="margin-left: 1021px;"/>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+    //$('#dropDownId :selected').text();
+    $(document).ready(function () {
+        document.getElementById("PostCode").disabled = true;
+
+        $("#SpecialistTypeId").change(function () {
+            $.get("/Admin/GetMenuList", { SpecialistTypeId: $("#SpecialistTypeId").val() }, function (data) {
+                $("#SubMenuId").empty();
+                $.each(data, function (index, row) {
+                    $("#SubMenuId").append("<option value='" + row.SubMenuId + "'>" + row.SubMenuName + "</option>")
+                });
+            });
+        });
+        $("#stateid").change(function () {
+            $.get("/StandardUser/GetSubUrbs", { stateid: $('#stateid :selected').text() }, function (data) {
+                console.log(data);
+                $("#SuburbsId").empty();
+                var s = '<option value="-1">--Select Suburbs--</option>';
+                var v = data;
+                console.log(v);
+                for (var i = 0; i < v.length; i++) {
+                    s += '<option value="' + data[i].Id + '">' + data[i].Suburbs + '</option>';
+                }
+                $("#SuburbsId").html(s);
+            });
+        });
+    });
+
+    $("#SuburbsId").change(function () {
+        $.get("/StandardUser/GetPostCode", { SuburbsId: $('#SuburbsId :selected').text() }, function (data) {
+            console.log(data);
+            $("#PostCode").empty();
+            //data = $.parseJSON(data);
+            var PostCode = $("#PostCode").val();
+            $("#PostCode").val(data.PostCode);
+        });
+    });
+
+    $("#btnSubmit").click(function () {
+        //sari fields krdena yhn
+        //if ($("#Title").val() == "" && $("#SpecialistName").val() == "") {
+        //    alert("Fields should not be empty");
+        //    return false;
+        //}
+        //else {
+        $("#loaderDiv").show();
+        var myformdata = $("#myForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/StandardUser/GetJsonData",
+            data: myformdata,
+            success: function (json) {
+                alert("success");
+
+                @*console.log(@ViewBag.longitue);*@
+                var tr;
+                //Append each row to html table
+                for (var i = 0; i < json.length; i++) {
+                    tr = $('<tr/>');
+                    tr.append("<td>" + json[i].Title + "</td>");
+                    tr.append("<td>" + json[i].SpecialistName + "</td>");
+                    tr.append("<td>" + json[i].Surname + "</td>");
+                    tr.append("<td>" + json[i].Address1 + "</td>");
+                    tr.append("<td>" + json[i].MobileNo + "</td>");
+                    tr.append("<td>" + json[i].PhoneNo + "</td>");
+                    tr.append("<td>" + json[i].EmailAddress + "</td>");
+                    tr.append("<td>" + json[i].State + "</td>");
+                    if (json[i].TakingNewPatients == true) {
+                        tr.append("<td>" + "<p>Yes</p>" + "</td>");
+                    }
+                    else {
+                        tr.append("<td>" + "<p>No</p>" + "</td>");
+                    }
+                    if (json[i].IsBooking == true) {
+                        tr.append("<td>" + "<p>Yes</p>" + "</td>");
+                    }
+                    else {
+                        tr.append("<td>" + "<p>No</p>" + "</td>");
+                    }
+                    tr.append("<td>" + json[i].Waiting_Time + "</td>");
+                    tr.append("<td>" + json[i].price + "</td>");
+                    tr.append("<td>" + json[i].Suburbs + "</td>");
+                    console.log(@ViewBag.latitude);
+                    console.log(@ViewBag.longitue);
+                    //tr.append("<td onclick='"window.location"window.location"https://www.google.com/maps/search/?api=1&query='24.8532 ,4545'>" + "</td>");
+                    @*$('<td>').append('<a href="https://www.google.com/maps/search/?api=1&query='@ViewBag.latitud ,@ViewBag.longitue'"'  </a> + "</td>"');*@
+                    //tr.append("<td onclick='window.location='https://www.google.com/maps/search/?api=1&query=24.8532,67.0167';");
+                    tr.append("<td onclick='window.location.href=\"https://www.google.com/maps/search/?api=1&query=" + json[i].Latitude + ',' + json[i].Longitude + "\"'>" + "Click Me" + "</td></tr>");
+
+                    $('#myTable').append(tr);
+                }
+                $("#loaderDiv").hide();
+            }
+        })
+    }
+    );
+
+
+</script>

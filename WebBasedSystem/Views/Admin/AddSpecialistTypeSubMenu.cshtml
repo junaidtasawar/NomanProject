@@ -1,0 +1,367 @@
+﻿@model WebBasedSystem.ViewModels.SpecialistTypeSubMenuModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdministratorLayout.cshtml";
+    ;
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script> 
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+<style>
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+#Name{
+    margin-top: 10px;
+}
+#NameEdit{
+    margin-top: 10px;
+}
+.field-validation-error {    
+            color: #ff0000;    
+        }    
+    
+        .field-validation-valid {    
+            display: none;    
+        }    
+    
+        .input-validation-error {    
+            border: 1px solid #ff0000;    
+            background-color: #ffeeee;    
+        
+</style>
+<div class="container" style="width:40%;margin-top:2%">
+    <a href="#" class="btn btn-outline-primary mb-1" data-toggle="modal" data-target="#MyModal" style="margin-left: -415px;">Add SubMenu</a>
+
+
+
+
+
+    @*<table class="table table-responsive">
+
+        <tr>
+            <th>SubMenuName</th>
+            <th>SpecialistType</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+        <tbody>
+
+            @if (ViewBag.EmployeeList != null)
+            {
+
+                foreach (var item in ViewBag.EmployeeList)
+                {
+                    <tr id="row_@item.SubMenuId">
+                        <td>@item.SubMenuName</td>
+                        <td>@item.SpecialistTypeName</td>
+                        <td><a href="#" class="btn btn-success" onclick="getEmployeeById(@item.SubMenuId)"><i class="glyphicon glyphicon-pencil"></i> </a> </td>
+                        <td><a href="#" class="btn btn-danger" onclick="ConfirmDelete(@item.SubMenuId)"><i class="glyphicon glyphicon-trash"></i> </a> </td>
+
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>*@
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12 mb-4" style="margin-left: -422px;">
+            <!-- Simple Tables -->
+            <div class="card" style="width:270%;">
+                <div class="table-responsive">
+                    <table id="example" class="table align-items-center table-flush">
+                        <thead class="">
+                            <tr style="background-color:darkblue;">
+                                <th style="color:white">Sub Menu</th>
+                                <th style="color:white">Specialist Type Name</th>
+                                <th style="color:white"></th>
+                                <th style="color:white"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @if (ViewBag.EmployeeList != null)
+            {
+
+                foreach (var item in ViewBag.EmployeeList)
+                {
+                                    <tr id="row_@item.SubMenuId">
+                                        <td>@item.SubMenuName</td>
+                                        <td>@item.SpecialistTypeName</td>
+                                        <td><a href="#" class="btn btn-outline-success mb-1" onclick="getEmployeeById(@item.SubMenuId)"><i class="fas fa-edit"></i> </a> </td>
+                                        <td><a href="#" class="btn btn-outline-danger mb-1" onclick="ConfirmDelete(@item.SubMenuId)"><i class="fas fa-trash-alt"></i> </a> </td>
+
+
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+  
+
+
+    <div class="modal fade" id="MyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3 class="modal-title"></h3>
+
+                </div>
+                <div class="modal-body">
+
+                    <form id="myForm">
+
+                        @Html.DropDownListFor(model => model.SpecialistTypeId, ViewBag.DepartmentList as SelectList, "--select--", new { @id = "DropDwn", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.SpecialistTypeId)
+                        
+                        @Html.TextBoxFor(model => model.SubMenuName, new { @id = "Name", @class = "form-control", @placeholder = "Name" })
+                        @Html.ValidationMessageFor(m => m.SubMenuName)
+
+                        
+
+
+                    </form>
+
+                    <div style="text-align:center;display:none" id="loaderDiv">
+                        <img src="~/Content/InternetSlowdown_Day.gif" width="150" />
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" id="btnClose" data-dismiss="modal">Cancel</a>
+                    <input type="reset" value="Save" class="btn btn-outline-secondary mb-1" id="btnSubmit" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="MyModalEdit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3 class="modal-title"></h3>
+
+                </div>
+                <div class="modal-body">
+
+                    <form id="myFormEdit">
+                        @Html.HiddenFor(model => model.SubMenuId)
+
+                        @Html.DropDownListFor(model => model.SpecialistTypeId, ViewBag.DepartmentList as SelectList, "--select--", new { @id = "DropDwnEdit", @class = "form-control" })
+                        @Html.TextBoxFor(model => model.SubMenuName, new { @id = "NameEdit", @class = "form-control", @placeholder = "Name" })
+                    </form>
+
+                    <div style="text-align:center;display:none" id="loaderDivEdit">
+                        <img src="~/Content/InternetSlowdown_Day.gif" width="150" />
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" id="btnClose" data-dismiss="modal">Cancel</a>
+                    <input type="button" value="Edit" class="btn btn-success" id="btnEdit" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3 class="modal-title"></h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure ? You want to delete this. </h4>
+
+                    <div style="text-align:center;display:none" id="loaderDiv">
+                        <img src="~/Content/InternetSlowdown_Day.gif" width="150" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                    <a href="#" class="btn btn-success" onclick="DeleteEmployee()">Confirm</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <input type="hidden" id="hiddenSubMenuId" />
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
+    $(document).ready(function () {
+
+
+        $("#btnSubmit").click(function () {
+            //if ($("#Name").val() == "") {
+            //    alert("Fields should not be empty");
+            //    return false;
+            //}
+
+
+            //else {
+                $("#loaderDiv").show();
+
+                var myformdata = $("#myForm").serialize();
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "/Admin/AddSpecialistTypeSubMenu",
+                    data: myformdata,
+                    success: function () {
+                        swal("The specialisttype submenu record is saved sucessfully ", "success");
+                        $("#loaderDiv").hide();
+                        window.location.href = "/Admin/AddSpecialistTypeSubMenu";
+                        $("#MyModal").modal("hide");
+
+                    }
+
+                })
+            //}
+
+            })
+
+    })
+
+
+    $("#btnEdit").click(function () {
+
+        $("#loaderDivEdit").show();
+
+        var myformdataedit = $("#myFormEdit").serialize();
+
+        $.ajax({
+
+
+            type: "POST",
+            url: "/Admin/UpdateSubMenu",
+            data: myformdataedit,
+            success: function () {
+                swal("The specialisttype submenu updated is saved sucessfully ", "success");
+                $("#loaderDivEdit").hide();
+                window.location.href = "/Admin/AddSpecialistTypeSubMenu";
+                $("#MyModalEdit").modal("hide");
+
+            }
+
+        })
+    })
+
+
+
+    function getEmployeeById(id) {
+        debugger;
+        var url = "/Admin/GetSubMenu?SubMenuId=" + id;
+
+        $("#MyModalEdit").modal();
+
+        $.ajax({
+            url:url,
+            type: 'GET',
+            success: function (data) {
+                var obj = JSON.parse(data);
+
+                $("#SubMenuId").val(obj.SubMenuId);
+                $("#NameEdit").val(obj.Name);
+                $("#DropDwnEdit option:selected").text(obj.SpecialistType.SpecialistTypeName);
+                $("#DropDwnEdit option:selected").val(obj.SpecialistTypeId);
+
+            },
+            error: function (err) {
+                alert("Error: " + err.responseText);
+            }
+        });
+    }
+    var ConfirmDelete = function (EmployeeId) {
+
+        $("#hiddenSubMenuId").val(EmployeeId);
+        $("#myModal").modal('show');
+
+    }
+
+    var DeleteEmployee = function () {
+
+        $("#loaderDiv").show();
+
+        var empId = $("#hiddenSubMenuId").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Admin/DeleteSubMenu",
+            data: { SubMenuId: empId },
+            success: function (result) {
+                swal("The specialisttype submenu record is deleted sucessfully ", "success");
+                $("#loaderDiv").hide();
+                $("#myModal").modal("hide");
+                $("#row_" + empId).remove();
+
+            }
+
+        })
+
+    }
+    //$("#btnClose").click(function () {
+    //    clear();
+    //});
+    //function clear() {
+    //    $("#Name").val("");
+    //    $("#hiddenEmployeeId").val("");
+    //    $("#Address").val("");
+    //    $("#SiteName").val("");
+
+    //}
+
+</script>

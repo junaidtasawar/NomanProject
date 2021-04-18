@@ -1,0 +1,361 @@
+﻿@model WebBasedSystem.ViewModels.SpecialistModel
+@{
+    Layout = "~/Views/Shared/_AdministratorLayout.cshtml";
+}
+
+@*<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
+      rel="Stylesheet" type="text/css" />
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/css/ruang-admin.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>  
+<style>
+    .row > [class^="col-"] { /* This will grab all the elements with classes that start with "col-" and that are the immediate children of #main-form. */
+    margin-bottom: 20px;
+    /* or the value of your bootstrap's gutter width so that you can have a nice consistent margin between elements*/
+}
+.field-validation-error {    
+            color: #ff0000;    
+        }    
+    
+        .field-validation-valid {    
+            display: none;    
+        }    
+    
+        .input-validation-error {    
+            border: 1px solid #ff0000;    
+            background-color: #ffeeee;    
+        }
+</style>
+<div class="row">
+    <div class="col-lg-6">
+        <!-- Form Basic -->
+        <div class="card mb-4" style="width:185%;margin-left: 65px;">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color:darkblue;">
+                <h6 class="m-0 font-weight-bold" style="color:white;">Specilaist Form</h6>
+            </div>
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <form id="myForm">
+
+                <div class="row">
+                    <input type="hidden" id="WayPointId" name="Id" />
+
+
+                    <div class="col-md-6">
+                        @if (ViewBag.CountryList != null)
+                        {
+                            @Html.DropDownListFor(model => model.SpecialistTypeId, ViewBag.CountryList as SelectList, "--Select SpecialistType--", new { @class = "form-control" })
+                           @Html.ValidationMessageFor(model => model.SpecialistTypeId, "", new { @class = "text-danger" })
+                        }
+
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.SubMenuId, new SelectList(" "), "--Select SubMenu--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SubMenuId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @if (ViewBag.Title != null)
+                        {
+                            @Html.DropDownListFor(model => model.TitleId, ViewBag.Title as SelectList, "--Select Title--", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TitleId, "", new { @class = "text-danger" })
+                        }
+                                        </div>
+
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.SpecialistName, new { @id = "SpecialistName", @class = "form-control", @placeholder = "Specialist Name" })
+                        @Html.ValidationMessageFor(model => model.SpecialistName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Surname, new { @id = "Surname", @class = "form-control", @placeholder = "Surname" })
+                        @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.BusinessName, new { @id = "BusinessName", @class = "form-control", @placeholder = "Business Name" })
+                        @Html.ValidationMessageFor(model => model.BusinessName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Age, new { @id = "Age",@type="number", @class = "form-control", @placeholder = "Age" })
+                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.PhoneNo, new { @id = "PhoneNo", @class = "form-control", @placeholder = "Phone No" })
+                        @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.MobileNo, new { @id = "MobileNo", @class = "form-control", @placeholder = "Mobile No" })
+                        @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.OfficeNo, new { @id = "OfficeNo", @class = "form-control", @placeholder = "Office No" })
+                        @Html.ValidationMessageFor(model => model.OfficeNo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Address1, new { @id = "Address1", @class = "form-control", rows = "5" , @placeholder = "Address 1" })
+                        @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Address2, new { @id = "Address2", @class = "form-control", rows = "5" , @placeholder = "Address 2" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.EmailAddress, new { @id = "EmailAddress", @class = "form-control", @placeholder = "Email Address" })
+                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Suburbs, new { @id = "Suburbs", @class = "form-control", @placeholder = "Suburbs" })
+                        @Html.ValidationMessageFor(model => model.Suburbs, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.State, new { @id = "State", @class = "form-control", @placeholder = "State" })
+                        @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.PostCode, new { @id = "PostCode", @class = "form-control", @placeholder = "PostCode" })
+                        @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
+                    </div>
+              
+
+
+                    <div class="col-md-6">
+@Html.TextBoxFor(m => m.price, new { @class = "form-control", type = "number", step = "0.01", max = "100000.00", placeholder = "Price", required = "required" })
+                        @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @if (ViewBag.Specialist != null)
+                        {
+                            @Html.DropDownListFor(model => model.SpecialistId, ViewBag.Specialist as SelectList, "--Select Specialist--", new { @class = "form-control" })
+                        }
+                    </div>
+                    <div class="col-md-6">
+                        @if (ViewBag.WaitingTime != null)
+                        {
+                            @Html.DropDownListFor(model => model.Waiting_Time_Id, ViewBag.WaitingTime as SelectList, "--Select Waiting Time--", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Waiting_Time_Id, "", new { @class = "text-danger" })
+                        }
+                    </div>
+                    <div class="col-md-6">
+                        <label>
+                            Booking
+                        </label>
+                        <label>
+
+                            @Html.RadioButtonFor(x => x.IsBooking, true)
+                            Yes
+                        </label>
+                        <label>
+                            @Html.RadioButtonFor(x => x.IsBooking, false)
+                            No
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.NotesDescription, new { @id = "NotesDescription", @class = "form-control", rows = "5", @placeholder = "Notes Description" })
+                        @Html.ValidationMessageFor(model => model.NotesDescription, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Taking New Patients</label>
+                        @*@Html.RadioButtonFor(model => model.TakingNewPatients, new { @id = "MobileNo", @class = "form-control", @placeholder = "Mobile No" })*@
+                        <label>
+                            @Html.RadioButtonFor(x => x.TakingNewPatients, true)
+                           
+                            Yes
+                        </label>
+                        <label>
+
+                            @Html.RadioButtonFor(x => x.TakingNewPatients, false)
+                           
+                            No
+                        </label>
+
+
+                    </div>
+
+  
+
+
+              
+                    <button  id="
+                            " type="submit" class="btn btn-outline-success mb-1" style="margin-left: 15px;width: 110px;">Submit</button>
+                </div>
+              </form>
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    <img src="~/Content/InternetSlowdown_Day.gif" width="150" />
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#SpecialistTypeId").change(function () {
+            $.get("/Admin/GetMenuList", { SpecialistTypeId: $("#SpecialistTypeId").val() }, function (data) {
+                $("#SubMenuId").empty();
+                $.each(data, function (index, row) {
+                    $("#SubMenuId").append("<option value='" + row.SubMenuId + "'>" + row.SubMenuName + "</option>")
+                });
+            });
+        });
+
+
+
+        $("#btnSubmit").click(function () {
+            //sari fields krdena yhn
+            //if ($("#Title").val() == "" && $("#SpecialistName").val() == "") {
+            //    alert("Fields should not be empty");
+            //    return false;
+            //}
+
+
+            //else {
+                $("#loaderDiv").show();
+
+                var myformdata = $("#myForm").serialize();
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "/Admin/Specialist",
+                    data: myformdata,
+                    success: function () {
+                        swal("The specialist record is saved sucessfully ", "success");
+                        //console.log("aaagay");
+                        $("#loaderDiv").hide();
+                        window.location.href = "/Admin/AllSpecialist";
+                        //$("#MyModal").modal("hide");
+
+                    }
+
+                })
+            //}
+
+        })
+
+        $(function () {
+            $("#PostCode").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Admin/AutoCompletePostCode/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#WayPointId").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+        $(function () {
+            $("#Suburbs").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Admin/AutoCompleteSuburbs/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#WayPointId").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+        $(function () {
+            $("#State").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Admin/AutoCompleteState/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#WayPointId").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+
+
+
+        function getEmployeeById(id) {
+            debugger;
+            var url = "/Admin/Get?SpecialistId=" + id;
+
+            $("#MyModalEdit").modal();
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (data) {
+                    var obj = JSON.parse(data);
+
+                    $("#SpecialistTypeId").val(obj.SpecialistTypeId);
+                    $("#NameEdit").val(obj.Name);
+
+
+                },
+                error: function (err) {
+                    alert("Error: " + err.responseText);
+                }
+            });
+        }
+
+    })
+
+</script>
+
